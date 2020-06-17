@@ -1,0 +1,87 @@
+debug: false
+#日志路径
+logging:
+  log_root: "D:/app/wp_basic/wp/"
+
+#服务端口号
+server:
+  port: 18888
+
+
+spring:
+  #Redis数据库
+  redis:
+    #数据库索引
+    database: 0
+    host: 128.64.151.10
+    port: 6379
+    password: seisys
+    jedis:
+      pool:
+        #连接池最大连接（使用负值标识没有限制）
+        max-active: 8
+        #连接池最大阻塞时间（使用负值标识没有限制）
+        max-wait: -1
+        #连接池中最大空闲连接数
+        max-idle: 5
+        #连接池中最小空闲连接数
+        min-idle: 0
+    #连接超时时间
+    timeout: 10000
+  # 配置数据源
+  application:
+  name: jta-dbsource
+  datasource:
+    db1:
+#      driver-class-name: oracle.jdbc.driver.OracleDriver
+      driver-class-name: oracle.jdbc.OracleDriver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:oracle:thin:@192.168.44.128:1521:orcl
+      username: tydic01
+      password: 123456
+      druid:
+        initial-size: 5
+    db2:
+#      driver-class-name: oracle.jdbc.driver.OracleDriver
+      driver-class-name: oracle.jdbc.OracleDriver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:oracle:thin:@192.168.44.128:1521:orcl
+      username: tydic02
+      password: 123456
+      druid:
+        initial-size: 5
+
+#    secondary3:
+#      driver-class-name: oracle.jdbc.driver.OracleDriver
+#      jdbc-url: jdbc:oracle:thin:@172.16.10.2:1521:orcl
+#      username: auth
+#      password: 123456
+#      druid:
+#        initial-size: 5
+
+
+  #http连接池配置
+http:
+  #最大链接数
+  maxTotal: 100
+  #并发数
+  defaultMaxPerRoute: 20
+  #创建链接的最长时间
+  connectTimeout: 1000
+  #从连接池中获取到连接的最长时间
+  connectionRequestTimeout: 500
+  #数据传输的最长时间
+  socketTimeout: 10000
+  #提交请求前测试链接是否可用
+  staleConnectionCheckEnabled: true
+
+
+
+
+
+
+
+
+
+
+

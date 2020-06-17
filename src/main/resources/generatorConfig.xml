@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--mysql 连接数据库jar 这里选择自己本地位置-->
+    <!--<classPathEntry location="E:/download/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar"/>-->
+    <classPathEntry location="E:/tools/oracle/ojdbc14-10.2.0.4.0.jar"/>
+    <!--<context id="testTables" targetRuntime="MyBatis3">-->
+        <!--<commentGenerator>-->
+            <!--&lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;-->
+            <!--<property name="suppressAllComments" value="true"/>-->
+        <!--</commentGenerator>-->
+        <!--&lt;!&ndash;数据库连接的信息：驱动类、连接地址、用户名、密码 &ndash;&gt;-->
+        <!--&lt;!&ndash;<jdbcConnection driverClass="com.mysql.jdbc.Driver"&ndash;&gt;-->
+                        <!--&lt;!&ndash;connectionURL="jdbc:mysql://localhost:3306/authority-control?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"&ndash;&gt;-->
+                        <!--&lt;!&ndash;userId="root"&ndash;&gt;-->
+                        <!--&lt;!&ndash;password="root">&ndash;&gt;-->
+        <!--&lt;!&ndash;</jdbcConnection>&ndash;&gt;-->
+        <!--&lt;!&ndash;<jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@10.37.61.139:1521:orcl"&ndash;&gt;-->
+            <!--&lt;!&ndash;userId="tydic_new_wp"&ndash;&gt;-->
+            <!--&lt;!&ndash;password="tydic_new_wp">&ndash;&gt;-->
+        <!--&lt;!&ndash;</jdbcConnection>&ndash;&gt;-->
+
+        <!--&lt;!&ndash; 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和-->
+            <!--NUMERIC 类型解析为java.math.BigDecimal &ndash;&gt;-->
+        <!--&lt;!&ndash;<javaTypeResolver>&ndash;&gt;-->
+            <!--&lt;!&ndash;<property name="forceBigDecimals" value="false"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</javaTypeResolver>&ndash;&gt;-->
+
+        <!--&lt;!&ndash; targetProject:生成PO类的位置 &ndash;&gt;-->
+        <!--&lt;!&ndash;<javaModelGenerator targetPackage="com.tydic.wp.microservicewpwp.modules.manage.test.entity" targetProject=".\src\main\java">&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; 从数据库返回的值被清理前后的空格 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<property name="trimStrings" value="true"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</javaModelGenerator>&ndash;&gt;-->
+        <!--&lt;!&ndash; targetProject:mapper映射文件生成的位置 &ndash;&gt;-->
+        <!--&lt;!&ndash;<sqlMapGenerator targetPackage="com.tydic.wp.microservicewpwp.modules.manage.test.mapper" targetProject=".\src\main\java">&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; enableSubPackages:是否让schema作为包的后缀 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<property name="enableSubPackages" value="false"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</sqlMapGenerator>&ndash;&gt;-->
+        <!--&lt;!&ndash; targetPackage：mapper接口生成的位置 &ndash;&gt;-->
+        <!--&lt;!&ndash;<javaClientGenerator type="XMLMAPPER" targetPackage="com.tydic.wp.microservicewpwp.modules.manage.test.mapper" targetProject=".\src\main\java">&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; enableSubPackages:是否让schema作为包的后缀 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<property name="enableSubPackages" value="false"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</javaClientGenerator>&ndash;&gt;-->
+        <!--&lt;!&ndash; 指定数据库表 &ndash;&gt;-->
+        <!--&lt;!&ndash;<table tableName="T_WP_APPLICATION_POSITION"></table>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<table tableName="orders"></table>&ndash;&gt;-->
+        <!--&lt;!&ndash;<table tableName="orderdetail"></table>&ndash;&gt;-->
+        <!--&lt;!&ndash;<table tableName="user"></table>&ndash;&gt;-->
+        <!--&lt;!&ndash; <table schema="" tableName="sys_user"></table>-->
+        <!--<table schema="" tableName="sys_role"></table>-->
+        <!--<table schema="" tableName="sys_permission"></table>-->
+        <!--<table schema="" tableName="sys_user_role"></table>-->
+        <!--<table schema="" tableName="sys_role_permission"></table> &ndash;&gt;-->
+
+        <!--&lt;!&ndash; 有些表的字段需要指定java类型-->
+         <!--<table schema="" tableName="">-->
+            <!--<columnOverride column="" javaType="" />-->
+        <!--</table> &ndash;&gt;-->
+
+    <!--</context>-->
+</generatorConfiguration>

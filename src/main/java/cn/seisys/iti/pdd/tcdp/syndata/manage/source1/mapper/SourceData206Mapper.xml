@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.seisys.iti.pdd.tcdp.syndata.manage.source1.mapper.SourceData206Mapper">
+
+    <select id="querySource1CargoList" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source1.entity.Cargo206Entity">
+      SELECT
+        ID,
+        DECLARE_CODE,
+        CARGO_CODE,
+        DECLARE_TON,
+        DECLARE_TEU,
+        DECLARE_PIECE,
+        PACKAGE_TYPE,
+        CAS_NO,
+        UN_NO,
+        DANGER_TYPE,
+        DANGER_TYPE1,
+        DANGER_TYPE2,
+        ISREMOVE,
+        TRANSPORT_NAME,
+        MEASURES_NUMBER,
+        ORDER_NUMBER,
+        IS_REF_POISON_GOODS,
+        SYN_ITEM,
+        SYN_FLAG,
+        SYN_TIME,
+        DANGER_TYPE_SPLIT,
+        DECLARE_ID,
+        DANGER_GROUPNAME,
+        ADDTIME,
+        CONTAINER_NO,
+        BILL_NO,
+        FULL_BOX,
+        CNT_TYPE,
+        CNT_SIZE,
+        BILL_CODE,
+        UUID
+      FROM SYN_DANGER_PRE_DECLARE_CARGO
+      WHERE SYN_FLAG = 0
+      <![CDATA[AND ROWNUM <= 2]]>
+    </select>
+    <!--<![CDATA[AND ROWNUM <= 1000]]>-->
+
+    <select id="querySource1DeclareList" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source1.entity.Declare206Entity">
+        SELECT
+            ID,
+            MAKER,
+            MAKE_DATE,
+            DECLARE_CODE,
+            APPROVAL_NUMBER,
+            NEW_DECLARE_CODE,
+            UNIT_CODE,
+            CONSIGNER,
+            SHIP_NAME,
+            VOYAGE_NUMBER_CODE,
+            ADDRESS,
+            FROM_PORT_CODE,
+            TO_PORT_CODE,
+            PRE_START_DATE,
+            PRE_END_DATE,
+            PACK_CODE,
+            MERGE_CONTAINER_CODE,
+            HANDLE_MODE,
+            ADD_INFO,
+            EMERGENCY_CODE,
+            DECLARE_UNIT,
+            DECLARE_DATE,
+            EMERGENCY_LINK_TEL_NO,
+            CHECK_UNIT_CODE,
+            CHECKER,
+            CHECKER_FLAG,
+            CHECK_DATE,
+            CHECK_OPTION,
+            REVOKER,
+            REVOKER_DATE,
+            UNLOCKER,
+            UNLOCK_TIME,
+            DECLARER,
+            TRANSPORT_TYPE,
+            TRANSPORT_DESC,
+            STATE,
+            DECLARE_TYPE,
+            PRERECORD_NO,
+            VERSION,
+            CHANGE_ORDER_REASON,
+            IS_SPOT_CHECK,
+            DECLARE_TOTAL_TEU,
+            DECLARE_TOTAL_TON,
+            DECLARE_TOTAL_PIECE,
+            IS_MUST_CHECK,
+            SYN_ITEM,
+            SYN_FLAG,
+            SYN_TIME,
+            SYN_TYPE,
+            SHIPMENT_TIME,
+            LEAVING_PORT_TIME,
+            WEAR_BA_TIME,
+            IS_WEAR_BA,
+            PORT_MEAASGE_GET_TIME,
+            PORT_MEAASGE_GET_FLAG,
+            IS_LOCKED,
+            DANGER_STORAGE_TIME,
+            DANGER_STORAGE_CONFIRM_SIGN,
+            DECLARE_TON_ACTUAL,
+            DECLARE_TEU_ACTUAL,
+            DECLARE_PIECE_ACTUAL,
+            INTO_PORT_TIME,
+            LOCK_TYPE,
+            MAKER_ID,
+            DECLARE_ID,
+            IS_REF_POISON_GOODS,
+            DECLARE_UNIT_CODE,
+            ADDTIME,
+            UUID
+        FROM SYN_HY_DANGER_PRE_DECLARE
+        WHERE SYN_FLAG = 0
+        <![CDATA[AND ROWNUM <= 2]]>
+    </select>
+
+
+    <select id="querySource1DocsList" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source1.entity.Docs206Entity">
+        SELECT
+            ID,
+            DECLARE_CODE,
+            CARGO_ORDER_NUMBER,
+            DOCS_ORDER_NUMBER,
+            DOCS_TYPE,
+            DOCS_NO,
+            TOTAL_QTY,
+            USING_QTY,
+            VALID_DATE,
+            IS_VALID,
+            ADDOPERATION,
+            ADDTIME,
+            ISREMOVE,
+            SYN_ITEM,
+            SYN_FLAG,
+            SYN_TIME,
+            DECLARE_ID,
+            UUID
+        FROM SYN_HY_DANGER_CARGO_DOCS
+        WHERE SYN_FLAG = 0
+        <![CDATA[AND ROWNUM <= 2]]>
+    </select>
+
+    <update id="updateDataSynStatusForCargo" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            UPDATE SYN_DANGER_PRE_DECLARE_CARGO
+            <set>
+                 SYN_FLAG = '1'
+            </set>
+            where UUID = #{item.uuid}
+        </foreach>
+    </update>
+
+    <update id="updateDataSynStatusForDeclare" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            UPDATE SYN_HY_DANGER_PRE_DECLARE
+            <set>
+                 SYN_FLAG = '1'
+            </set>
+            where UUID = #{item.uuid}
+        </foreach>
+    </update>
+
+    <update id="updateDataSynStatusForDocs" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            UPDATE SYN_HY_DANGER_CARGO_DOCS
+            <set>
+                SYN_FLAG = '1'
+            </set>
+            where UUID = #{item.uuid}
+        </foreach>
+    </update>
+
+
+
+    <select id="query206Data" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source1.entity.TestEntity">
+        SELECT F_BATCH_NUMBER id FROM T_BATCH_NUMBER
+    </select>
+
+    <insert id="insertTestData" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            INSERT INTO T_BATCH_NUMBER
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    F_BATCH_NUMBER,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    #{item.id},
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+
+</mapper>

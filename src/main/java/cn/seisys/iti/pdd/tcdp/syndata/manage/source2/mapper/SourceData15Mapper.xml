@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.seisys.iti.pdd.tcdp.syndata.manage.source2.mapper.SourceData15Mapper">
+
+    <select id="querySource2CargoList" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source2.entity.Cargo15Entity">
+      SELECT
+        ID,
+        DECLARE_CODE,
+        CARGO_CODE,
+        DECLARE_TON,
+        DECLARE_TEU,
+        DECLARE_PIECE,
+        PACKAGE_TYPE,
+        CAS_NO,
+        UN_NO,
+        DANGER_TYPE,
+        DANGER_TYPE1,
+        DANGER_TYPE2,
+        ISREMOVE,
+        TRANSPORT_NAME,
+        MEASURES_NUMBER,
+        ORDER_NUMBER,
+        IS_REF_POISON_GOODS,
+        SYN_ITEM,
+        SYN_FLAG,
+        SYN_TIME,
+        DANGER_TYPE_SPLIT,
+        DECLARE_ID,
+        DANGER_GROUPNAME,
+        ADDTIME,
+        CONTAINER_NO,
+        BILL_NO,
+        FULL_BOX,
+        CNT_TYPE,
+        CNT_SIZE,
+        BILL_CODE,
+        UUID
+      FROM SYN_DANGER_PRE_DECLARE_CARGO
+      WHERE SYN_FLAG = 0
+    </select>
+
+
+    <select id="querySource2DeclareList" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source2.entity.Declare15Entity">
+        SELECT
+            ID,
+            MAKER,
+            MAKE_DATE,
+            DECLARE_CODE,
+            APPROVAL_NUMBER,
+            NEW_DECLARE_CODE,
+            UNIT_CODE,
+            CONSIGNER,
+            SHIP_NAME,
+            VOYAGE_NUMBER_CODE,
+            ADDRESS,
+            FROM_PORT_CODE,
+            TO_PORT_CODE,
+            PRE_START_DATE,
+            PRE_END_DATE,
+            PACK_CODE,
+            MERGE_CONTAINER_CODE,
+            HANDLE_MODE,
+            ADD_INFO,
+            EMERGENCY_CODE,
+            DECLARE_UNIT,
+            DECLARE_DATE,
+            EMERGENCY_LINK_TEL_NO,
+            CHECK_UNIT_CODE,
+            CHECKER,
+            CHECKER_FLAG,
+            CHECK_DATE,
+            CHECK_OPTION,
+            REVOKER,
+            REVOKER_DATE,
+            UNLOCKER,
+            UNLOCK_TIME,
+            DECLARER,
+            TRANSPORT_TYPE,
+            TRANSPORT_DESC,
+            STATE,
+            DECLARE_TYPE,
+            PRERECORD_NO,
+            VERSION,
+            CHANGE_ORDER_REASON,
+            IS_SPOT_CHECK,
+            DECLARE_TOTAL_TEU,
+            DECLARE_TOTAL_TON,
+            DECLARE_TOTAL_PIECE,
+            IS_MUST_CHECK,
+            SYN_ITEM,
+            SYN_FLAG,
+            SYN_TIME,
+            SYN_TYPE,
+            SHIPMENT_TIME,
+            LEAVING_PORT_TIME,
+            WEAR_BA_TIME,
+            IS_WEAR_BA,
+            PORT_MEAASGE_GET_TIME,
+            PORT_MEAASGE_GET_FLAG,
+            IS_LOCKED,
+            DANGER_STORAGE_TIME,
+            DANGER_STORAGE_CONFIRM_SIGN,
+            DECLARE_TON_ACTUAL,
+            DECLARE_TEU_ACTUAL,
+            DECLARE_PIECE_ACTUAL,
+            INTO_PORT_TIME,
+            LOCK_TYPE,
+            MAKER_ID,
+            DECLARE_ID,
+            IS_REF_POISON_GOODS,
+            DECLARE_UNIT_CODE,
+            ADDTIME,
+            UUID
+        FROM SYN_DANGER_PRE_DECLARE_CARGO
+        WHERE SYN_FLAG = 0
+    </select>
+
+
+    <select id="querySource2DocsList" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source2.entity.Docs15Entity">
+        SELECT
+            ID,
+            DECLARE_CODE,
+            CARGO_ORDER_NUMBER,
+            DOCS_ORDER_NUMBER,
+            DOCS_TYPE,
+            DOCS_NO,
+            TOTAL_QTY,
+            USING_QTY,
+            VALID_DATE,
+            IS_VALID,
+            ADDOPERATION,
+            ADDTIME,
+            ISREMOVE,
+            SYN_ITEM,
+            SYN_FLAG,
+            SYN_TIME,
+            DECLARE_ID,
+            UUID
+        FROM SYN_HY_DANGER_CARGO_DOCS
+        WHERE SYN_FLAG = 0
+    </select>
+
+
+    <insert id="insertSource2CargoList" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            INSERT INTO SYN_DANGER_PRE_DECLARE_CARGO
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                ID,
+                </if>
+                <if test="item.declare_code != null and item.declare_code != ''">
+                DECLARE_CODE,
+                </if>
+                <if test="item.cargo_code != null and item.cargo_code != ''">
+                CARGO_CODE,
+                </if>
+                <if test="item.declare_ton != null and item.declare_ton != ''">
+                DECLARE_TON,
+                </if>
+                <if test="item.declare_teu != null and item.declare_teu != ''">
+                DECLARE_TEU,
+                </if>
+                <if test="item.declare_piece != null and item.declare_piece != ''">
+                DECLARE_PIECE,
+                </if>
+                <if test="item.package_type != null and item.package_type != ''">
+                PACKAGE_TYPE,
+                </if>
+                <if test="item.cas_no != null and item.cas_no != ''">
+                CAS_NO,
+                </if>
+                <if test="item.un_no != null and item.un_no != ''">
+                UN_NO,
+                </if>
+                <if test="item.danger_type != null and item.danger_type != ''">
+                DANGER_TYPE,
+                </if>
+                <if test="item.danger_type1 != null and item.danger_type1 != ''">
+                DANGER_TYPE1,
+                </if>
+                <if test="item.danger_type2 != null and item.danger_type2 != ''">
+                DANGER_TYPE2,
+                </if>
+                <if test="item.isremove != null and item.isremove != ''">
+                ISREMOVE,
+                </if>
+                <if test="item.transport_name != null and item.transport_name != ''">
+                TRANSPORT_NAME,
+                </if>
+                <if test="item.measures_number != null and item.measures_number != ''">
+                MEASURES_NUMBER,
+                </if>
+                <if test="item.order_number != null and item.order_number != ''">
+                ORDER_NUMBER,
+                </if>
+                <if test="item.is_ref_poison_goods != null and item.is_ref_poison_goods != ''">
+                IS_REF_POISON_GOODS,
+                </if>
+                <if test="item.syn_item != null and item.syn_item != ''">
+                SYN_ITEM,
+                </if>
+                <if test="item.syn_flag != null and item.syn_flag != ''">
+                SYN_FLAG,
+                </if>
+                <if test="item.syn_time != null and item.syn_time != ''">
+                SYN_TIME,
+                </if>
+                <if test="item.danger_type_split != null and item.danger_type_split != ''">
+                DANGER_TYPE_SPLIT,
+                </if>
+                <if test="item.declare_id != null and item.declare_id != ''">
+                DECLARE_ID,
+                </if>
+                <if test="item.danger_groupname != null and item.danger_groupname != ''">
+                DANGER_GROUPNAME,
+                </if>
+                <if test="item.addtime != null and item.addtime != ''">
+                ADDTIME,
+                </if>
+                <if test="item.container_no != null and item.container_no != ''">
+                CONTAINER_NO,
+                </if>
+                <if test="item.bill_no != null and item.bill_no != ''">
+                BILL_NO,
+                </if>
+                <if test="item.full_box != null and item.full_box != ''">
+                FULL_BOX,
+                </if>
+                <if test="item.cnt_type != null and item.cnt_type != ''">
+                CNT_TYPE,
+                </if>
+                <if test="item.cnt_size != null and item.cnt_size != ''">
+                CNT_SIZE,
+                </if>
+                <if test="item.bill_code != null and item.bill_code != ''">
+                BILL_CODE,
+                </if>
+                <if test="item.uuid != null and item.uuid != ''">
+                    UUID,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    #{item.id},
+                </if>
+                <if test="item.declare_code != null and item.declare_code != ''">
+                    #{item.declare_code},
+                </if>
+                <if test="item.cargo_code != null and item.cargo_code != ''">
+                    #{item.cargo_code},
+                </if>
+                <if test="item.declare_ton != null and item.declare_ton != ''">
+                    #{item.declare_ton},
+                </if>
+                <if test="item.declare_teu != null and item.declare_teu != ''">
+                    #{item.declare_teu},
+                </if>
+                <if test="item.declare_piece != null and item.declare_piece != ''">
+                    #{item.declare_piece},
+                </if>
+                <if test="item.package_type != null and item.package_type != ''">
+                    #{item.package_type},
+                </if>
+                <if test="item.cas_no != null and item.cas_no != ''">
+                    #{item.cas_no},
+                </if>
+                <if test="item.un_no != null and item.un_no != ''">
+                    #{item.un_no},
+                </if>
+                <if test="item.danger_type != null and item.danger_type != ''">
+                    #{item.danger_type},
+                </if>
+                <if test="item.danger_type1 != null and item.danger_type1 != ''">
+                    #{item.danger_type1},
+                </if>
+                <if test="item.danger_type2 != null and item.danger_type2 != ''">
+                    #{item.danger_type2},
+                </if>
+                <if test="item.isremove != null and item.isremove != ''">
+                    #{item.isremove},
+                </if>
+                <if test="item.transport_name != null and item.transport_name != ''">
+                    #{item.transport_name},
+                </if>
+                <if test="item.measures_number != null and item.measures_number != ''">
+                    #{item.measures_number},
+                </if>
+                <if test="item.order_number != null and item.order_number != ''">
+                    #{item.order_number},
+                </if>
+                <if test="item.is_ref_poison_goods != null and item.is_ref_poison_goods != ''">
+                    #{item.is_ref_poison_goods},
+                </if>
+                <if test="item.syn_item != null and item.syn_item != ''">
+                    #{item.syn_item},
+                </if>
+                <if test="item.syn_flag != null and item.syn_flag != ''">
+                    #{item.syn_flag},
+                </if>
+                <if test="item.syn_time != null and item.syn_time != ''">
+                    TO_DATE(#{item.syn_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.danger_type_split != null and item.danger_type_split != ''">
+                    #{item.danger_type_split},
+                </if>
+                <if test="item.declare_id != null and item.declare_id != ''">
+                    #{item.declare_id},
+                </if>
+                <if test="item.danger_groupname != null and item.danger_groupname != ''">
+                    #{item.danger_groupname},
+                </if>
+                <if test="item.addtime != null and item.addtime != ''">
+                    TO_DATE(#{item.addtime}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.container_no != null and item.container_no != ''">
+                    #{item.container_no},
+                </if>
+                <if test="item.bill_no != null and item.bill_no != ''">
+                    #{item.bill_no},
+                </if>
+                <if test="item.full_box != null and item.full_box != ''">
+                    #{item.full_box},
+                </if>
+                <if test="item.cnt_type != null and item.cnt_type != ''">
+                    #{item.cnt_type},
+                </if>
+                <if test="item.cnt_size != null and item.cnt_size != ''">
+                    #{item.cnt_size},
+                </if>
+                <if test="item.bill_code != null and item.bill_code != ''">
+                    #{item.bill_code},
+                </if>
+                <if test="item.uuid != null and item.uuid != ''">
+                    #{item.uuid},
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+
+
+    <insert id="insertSource2DeclareList" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            INSERT INTO SYN_HY_DANGER_PRE_DECLARE
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    ID,
+                </if>
+                <if test="item.maker != null and item.maker != ''">
+                    MAKER,
+                </if>
+                <if test="item.make_date != null and item.make_date != ''">
+                    MAKE_DATE,
+                </if>
+                <if test="item.declare_code != null and item.declare_code != ''">
+                    DECLARE_CODE,
+                </if>
+                <if test="item.approval_number != null and item.approval_number != ''">
+                    APPROVAL_NUMBER,
+                </if>
+                <if test="item.new_declare_code != null and item.new_declare_code != ''">
+                    NEW_DECLARE_CODE,
+                </if>
+                <if test="item.unit_code != null and item.unit_code != ''">
+                    UNIT_CODE,
+                </if>
+                <if test="item.consigner != null and item.consigner != ''">
+                     CONSIGNER,
+                </if>
+                <if test="item.ship_name != null and item.ship_name != ''">
+                    SHIP_NAME,
+                </if>
+                <if test="item.voyage_number_code != null and item.voyage_number_code != ''">
+                    VOYAGE_NUMBER_CODE,
+                </if>
+                <if test="item.address != null and item.address != ''">
+                    ADDRESS,
+                </if>
+                <if test="item.from_port_code != null and item.from_port_code != ''">
+                    FROM_PORT_CODE,
+                </if>
+                <if test="item.to_port_code != null and item.to_port_code != ''">
+                    TO_PORT_CODE,
+                </if>
+                <if test="item.pre_start_date != null and item.pre_start_date != ''">
+                    PRE_START_DATE,
+                </if>
+                <if test="item.pre_end_date != null and item.pre_end_date != ''">
+                    PRE_END_DATE,
+                </if>
+                <if test="item.pack_code != null and item.pack_code != ''">
+                    PACK_CODE,
+                </if>
+                <if test="item.merge_container_code != null and item.merge_container_code != ''">
+                    MERGE_CONTAINER_CODE,
+                </if>
+                <if test="item.handle_mode != null and item.handle_mode != ''">
+                    HANDLE_MODE,
+                </if>
+                <if test="item.add_info != null and item.add_info != ''">
+                     ADD_INFO,
+                </if>
+                <if test="item.emergency_code != null and item.emergency_code != ''">
+                    EMERGENCY_CODE,
+                </if>
+                <if test="item.declare_unit != null and item.declare_unit != ''">
+                    DECLARE_UNIT,
+                </if>
+                <if test="item.declare_date != null and item.declare_date != ''">
+                    DECLARE_DATE,
+                </if>
+                <if test="item.emergency_link_tel_no != null and item.emergency_link_tel_no != ''">
+                    EMERGENCY_LINK_TEL_NO,
+                </if>
+                <if test="item.check_unit_code != null and item.check_unit_code != ''">
+                    CHECK_UNIT_CODE,
+                </if>
+                <if test="item.checker != null and item.checker != ''">
+                     CHECKER,
+                </if>
+                <if test="item.checker_flag != null and item.checker_flag != ''">
+                    CHECKER_FLAG,
+                </if>
+                <if test="item.check_date != null and item.check_date != ''">
+                     CHECK_DATE,
+                </if>
+                <if test="item.check_option != null and item.check_option != ''">
+                    CHECK_OPTION,
+                </if>
+                <if test="item.revoker != null and item.revoker != ''">
+                    REVOKER,
+                </if>
+                <if test="item.revoker_date != null and item.revoker_date != ''">
+                    REVOKER_DATE,
+                </if>
+                <if test="item.unlocker != null and item.unlocker != ''">
+                    UNLOCKER,
+                </if>
+                <if test="item.unlock_time != null and item.unlock_time != ''">
+                    UNLOCK_TIME,
+                </if>
+                <if test="item.declarer != null and item.declarer != ''">
+                    DECLARER,
+                </if>
+                <if test="item.transport_type != null and item.transport_type != ''">
+                    TRANSPORT_TYPE,
+                </if>
+                <if test="item.transport_desc != null and item.transport_desc != ''">
+                    TRANSPORT_DESC,
+                </if>
+                <if test="item.state != null and item.state != ''">
+                    STATE,
+                </if>
+                <if test="item.declare_type != null and item.declare_type != ''">
+                    DECLARE_TYPE,
+                </if>
+                <if test="item.prerecord_no != null and item.prerecord_no != ''">
+                    PRERECORD_NO,
+                </if>
+                <if test="item.version != null and item.version != ''">
+                    VERSION,
+                </if>
+                <if test="item.change_order_reason != null and item.change_order_reason != ''">
+                    CHANGE_ORDER_REASON,
+                </if>
+                <if test="item.is_spot_check != null and item.is_spot_check != ''">
+                    IS_SPOT_CHECK,
+                </if>
+                <if test="item.declare_total_teu != null and item.declare_total_teu != ''">
+                    DECLARE_TOTAL_TEU,
+                </if>
+                <if test="item.declare_total_ton != null and item.declare_total_ton != ''">
+                    DECLARE_TOTAL_TON,
+                </if>
+                <if test="item.declare_total_piece != null and item.declare_total_piece != ''">
+                    DECLARE_TOTAL_PIECE,
+                </if>
+                <if test="item.is_must_check != null and item.is_must_check != ''">
+                    IS_MUST_CHECK,
+                </if>
+                <if test="item.syn_item != null and item.syn_item != ''">
+                    SYN_ITEM,
+                </if>
+                <if test="item.syn_flag != null and item.syn_flag != ''">
+                    SYN_FLAG,
+                </if>
+                <if test="item.syn_time != null and item.syn_time != ''">
+                    SYN_TIME,
+                </if>
+                <if test="item.syn_type != null and item.syn_type != ''">
+                    SYN_TYPE,
+                </if>
+                <if test="item.shipment_time != null and item.shipment_time != ''">
+                    SHIPMENT_TIME,
+                </if>
+                <if test="item.leaving_port_time != null and item.leaving_port_time != ''">
+                    LEAVING_PORT_TIME,
+                </if>
+                <if test="item.wear_ba_time != null and item.wear_ba_time != ''">
+                    WEAR_BA_TIME,
+                </if>
+                <if test="item.is_wear_ba != null and item.is_wear_ba != ''">
+                    IS_WEAR_BA,
+                </if>
+                <if test="item.port_meaasge_get_time != null and item.port_meaasge_get_time != ''">
+                    PORT_MEAASGE_GET_TIME,
+                </if>
+                <if test="item.port_meaasge_get_flag != null and item.port_meaasge_get_flag != ''">
+                    PORT_MEAASGE_GET_FLAG,
+                </if>
+                <if test="item.is_locked != null and item.is_locked != ''">
+                    IS_LOCKED,
+                </if>
+                <if test="item.danger_storage_time != null and item.danger_storage_time != ''">
+                    DANGER_STORAGE_TIME,
+                </if>
+                <if test="item.danger_storage_confirm_sign != null and item.danger_storage_confirm_sign != ''">
+                    DANGER_STORAGE_CONFIRM_SIGN,
+                </if>
+                <if test="item.declare_ton_actual != null and item.declare_ton_actual != ''">
+                    DECLARE_TON_ACTUAL,
+                </if>
+                <if test="item.declare_teu_actual != null and item.declare_teu_actual != ''">
+                    DECLARE_TEU_ACTUAL,
+                </if>
+                <if test="item.declare_piece_actual != null and item.declare_piece_actual != ''">
+                    DECLARE_PIECE_ACTUAL,
+                </if>
+                <if test="item.into_port_time != null and item.into_port_time != ''">
+                    INTO_PORT_TIME,
+                </if>
+                <if test="item.lock_type != null and item.lock_type != ''">
+                    LOCK_TYPE,
+                </if>
+                <if test="item.maker_id != null and item.maker_id != ''">
+                    MAKER_ID,
+                </if>
+                <if test="item.declare_id != null and item.declare_id != ''">
+                    DECLARE_ID,
+                </if>
+                <if test="item.is_ref_poison_goods != null and item.is_ref_poison_goods != ''">
+                    IS_REF_POISON_GOODS,
+                </if>
+                <if test="item.declare_unit_code != null and item.declare_unit_code != ''">
+                    DECLARE_UNIT_CODE,
+                </if>
+                <if test="item.addtime != null and item.addtime != ''">
+                    ADDTIME,
+                </if>
+                <if test="item.uuid != null and item.uuid != ''">
+                    UUID,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    #{item.id},
+                </if>
+                <if test="item.maker != null and item.maker != ''">
+                    #{item.maker},
+                </if>
+                <if test="item.make_date != null and item.make_date != ''">
+                    TO_DATE(#{item.make_date}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.declare_code != null and item.declare_code != ''">
+                    #{item.declare_code},
+                </if>
+                <if test="item.approval_number != null and item.approval_number != ''">
+                    #{item.approval_number},
+                </if>
+                <if test="item.new_declare_code != null and item.new_declare_code != ''">
+                    #{item.new_declare_code},
+                </if>
+                <if test="item.unit_code != null and item.unit_code != ''">
+                    #{item.unit_code},
+                </if>
+                <if test="item.consigner != null and item.consigner != ''">
+                    #{item.consigner},
+                </if>
+                <if test="item.ship_name != null and item.ship_name != ''">
+                    #{item.ship_name},
+                </if>
+                <if test="item.voyage_number_code != null and item.voyage_number_code != ''">
+                    #{item.voyage_number_code},
+                </if>
+                <if test="item.address != null and item.address != ''">
+                    #{item.address},
+                </if>
+                <if test="item.from_port_code != null and item.from_port_code != ''">
+                    #{item.from_port_code},
+                </if>
+                <if test="item.to_port_code != null and item.to_port_code != ''">
+                    #{item.to_port_code},
+                </if>
+                <if test="item.pre_start_date != null and item.pre_start_date != ''">
+                    TO_DATE(#{item.pre_start_date}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.pre_end_date != null and item.pre_end_date != ''">
+                    TO_DATE(#{item.pre_end_date}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.pack_code != null and item.pack_code != ''">
+                    #{item.pack_code},
+                </if>
+                <if test="item.merge_container_code != null and item.merge_container_code != ''">
+                    #{item.merge_container_code},
+                </if>
+                <if test="item.handle_mode != null and item.handle_mode != ''">
+                    #{item.handle_mode},
+                </if>
+                <if test="item.add_info != null and item.add_info != ''">
+                    #{item.add_info},
+                </if>
+                <if test="item.emergency_code != null and item.emergency_code != ''">
+                    #{item.emergency_code},
+                </if>
+                <if test="item.declare_unit != null and item.declare_unit != ''">
+                    #{item.declare_unit},
+                </if>
+                <if test="item.declare_date != null and item.declare_date != ''">
+                    TO_DATE(#{item.declare_date}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.emergency_link_tel_no != null and item.emergency_link_tel_no != ''">
+                    #{item.emergency_link_tel_no},
+                </if>
+                <if test="item.check_unit_code != null and item.check_unit_code != ''">
+                    #{item.check_unit_code},
+                </if>
+                <if test="item.checker != null and item.checker != ''">
+                    #{item.checker},
+                </if>
+                <if test="item.checker_flag != null and item.checker_flag != ''">
+                    #{item.checker_flag},
+                </if>
+                <if test="item.check_date != null and item.check_date != ''">
+                    TO_DATE(#{item.check_date}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.check_option != null and item.check_option != ''">
+                    #{item.check_option},
+                </if>
+                <if test="item.revoker != null and item.revoker != ''">
+                    #{item.revoker},
+                </if>
+                <if test="item.revoker_date != null and item.revoker_date != ''">
+                    TO_DATE(#{item.revoker_date}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.unlocker != null and item.unlocker != ''">
+                    #{item.unlocker},
+                </if>
+                <if test="item.unlock_time != null and item.unlock_time != ''">
+                    TO_DATE(#{item.unlock_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.declarer != null and item.declarer != ''">
+                    #{item.declarer},
+                </if>
+                <if test="item.transport_type != null and item.transport_type != ''">
+                    #{item.transport_type},
+                </if>
+                <if test="item.transport_desc != null and item.transport_desc != ''">
+                    #{item.transport_desc},
+                </if>
+                <if test="item.state != null and item.state != ''">
+                    #{item.state},
+                </if>
+                <if test="item.declare_type != null and item.declare_type != ''">
+                    #{item.declare_type},
+                </if>
+                <if test="item.prerecord_no != null and item.prerecord_no != ''">
+                    #{item.prerecord_no},
+                </if>
+                <if test="item.version != null and item.version != ''">
+                    #{item.version},
+                </if>
+                <if test="item.change_order_reason != null and item.change_order_reason != ''">
+                    #{item.change_order_reason},
+                </if>
+                <if test="item.is_spot_check != null and item.is_spot_check != ''">
+                    #{item.is_spot_check},
+                </if>
+                <if test="item.declare_total_teu != null and item.declare_total_teu != ''">
+                    #{item.declare_total_teu},
+                </if>
+                <if test="item.declare_total_ton != null and item.declare_total_ton != ''">
+                    #{item.declare_total_ton},
+                </if>
+                <if test="item.declare_total_piece != null and item.declare_total_piece != ''">
+                    #{item.declare_total_piece},
+                </if>
+                <if test="item.is_must_check != null and item.is_must_check != ''">
+                    #{item.is_must_check},
+                </if>
+                <if test="item.syn_item != null and item.syn_item != ''">
+                    #{item.syn_item},
+                </if>
+                <if test="item.syn_flag != null and item.syn_flag != ''">
+                    #{item.syn_flag},
+                </if>
+                <if test="item.syn_time != null and item.syn_time != ''">
+                    TO_DATE(#{item.syn_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.syn_type != null and item.syn_type != ''">
+                    #{item.syn_type},
+                </if>
+                <if test="item.shipment_time != null and item.shipment_time != ''">
+                    TO_DATE(#{item.shipment_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.leaving_port_time != null and item.leaving_port_time != ''">
+                    TO_DATE(#{item.leaving_port_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.wear_ba_time != null and item.wear_ba_time != ''">
+                    TO_DATE(#{item.wear_ba_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.is_wear_ba != null and item.is_wear_ba != ''">
+                    #{item.is_wear_ba},
+                </if>
+                <if test="item.port_meaasge_get_time != null and item.port_meaasge_get_time != ''">
+                    TO_DATE(#{item.port_meaasge_get_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.port_meaasge_get_flag != null and item.port_meaasge_get_flag != ''">
+                    #{item.port_meaasge_get_flag},
+                </if>
+                <if test="item.is_locked != null and item.is_locked != ''">
+                    #{item.is_locked},
+                </if>
+                <if test="item.danger_storage_time != null and item.danger_storage_time != ''">
+                    TO_DATE(#{item.danger_storage_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.danger_storage_confirm_sign != null and item.danger_storage_confirm_sign != ''">
+                    #{item.danger_storage_confirm_sign},
+                </if>
+                <if test="item.declare_ton_actual != null and item.declare_ton_actual != ''">
+                    #{item.declare_ton_actual},
+                </if>
+                <if test="item.declare_teu_actual != null and item.declare_teu_actual != ''">
+                    #{item.declare_teu_actual},
+                </if>
+                <if test="item.declare_piece_actual != null and item.declare_piece_actual != ''">
+                    #{item.declare_piece_actual},
+                </if>
+                <if test="item.into_port_time != null and item.into_port_time != ''">
+                    TO_DATE(#{item.into_port_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.lock_type != null and item.lock_type != ''">
+                    #{item.lock_type},
+                </if>
+                <if test="item.maker_id != null and item.maker_id != ''">
+                    #{item.maker_id},
+                </if>
+                <if test="item.declare_id != null and item.declare_id != ''">
+                    #{item.declare_id},
+                </if>
+                <if test="item.is_ref_poison_goods != null and item.is_ref_poison_goods != ''">
+                    #{item.is_ref_poison_goods},
+                </if>
+                <if test="item.declare_unit_code != null and item.declare_unit_code != ''">
+                    #{item.declare_unit_code},
+                </if>
+                <if test="item.addtime != null and item.addtime != ''">
+                    TO_DATE(#{item.addtime}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.uuid != null and item.uuid != ''">
+                    #{item.uuid},
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+
+
+
+    <insert id="insertSource2DocsList" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            INSERT INTO SYN_HY_DANGER_CARGO_DOCS
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    ID,
+                </if>
+                <if test="item.declare_code != null and item.declare_code != ''">
+                    DECLARE_CODE,
+                </if>
+                <if test="item.cargo_order_number != null and item.cargo_order_number != ''">
+                    CARGO_ORDER_NUMBER,
+                </if>
+                <if test="item.docs_order_number != null and item.docs_order_number != ''">
+                    DOCS_ORDER_NUMBER,
+                </if>
+                <if test="item.docs_type != null and item.docs_type != ''">
+                    DOCS_TYPE,
+                </if>
+                <if test="item.docs_no != null and item.docs_no != ''">
+                    DOCS_NO,
+                </if>
+                <if test="item.total_qty != null and item.total_qty != ''">
+                    TOTAL_QTY,
+                </if>
+                <if test="item.using_qty != null and item.using_qty != ''">
+                    USING_QTY,
+                </if>
+                <if test="item.valid_date != null and item.valid_date != ''">
+                    VALID_DATE,
+                </if>
+                <if test="item.is_valid != null and item.is_valid != ''">
+                    IS_VALID,
+                </if>
+                <if test="item.addoperation != null and item.addoperation != ''">
+                    ADDOPERATION,
+                </if>
+                <if test="item.addtime != null and item.addtime != ''">
+                    ADDTIME,
+                </if>
+                <if test="item.isremove != null and item.isremove != ''">
+                    ISREMOVE,
+                </if>
+                <if test="item.syn_item != null and item.syn_item != ''">
+                    SYN_ITEM,
+                </if>
+                <if test="item.syn_flag != null and item.syn_flag != ''">
+                    SYN_FLAG,
+                </if>
+                <if test="item.syn_time != null and item.syn_time != ''">
+                    SYN_TIME,
+                </if>
+                <if test="item.declare_id != null and item.declare_id != ''">
+                    DECLARE_ID,
+                </if>
+                <if test="item.uuid != null and item.uuid != ''">
+                    UUID,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    #{item.id},
+                </if>
+                <if test="item.declare_code != null and item.declare_code != ''">
+                    #{item.declare_code},
+                </if>
+                <if test="item.cargo_order_number != null and item.cargo_order_number != ''">
+                    #{item.cargo_order_number},
+                </if>
+                <if test="item.docs_order_number != null and item.docs_order_number != ''">
+                    #{item.docs_order_number},
+                </if>
+                <if test="item.docs_type != null and item.docs_type != ''">
+                    #{item.docs_type},
+                </if>
+                <if test="item.docs_no != null and item.docs_no != ''">
+                    #{item.docs_no},
+                </if>
+                <if test="item.total_qty != null and item.total_qty != ''">
+                    #{item.total_qty},
+                </if>
+                <if test="item.using_qty != null and item.using_qty != ''">
+                    #{item.using_qty},
+                </if>
+                <if test="item.valid_date != null and item.valid_date != ''">
+                    TO_DATE(#{item.valid_date}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.is_valid != null and item.is_valid != ''">
+                    #{item.is_valid},
+                </if>
+                <if test="item.addoperation != null and item.addoperation != ''">
+                    #{item.addoperation},
+                </if>
+                <if test="item.addtime != null and item.addtime != ''">
+                    TO_DATE(#{item.addtime}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.isremove != null and item.isremove != ''">
+                    #{item.isremove},
+                </if>
+                <if test="item.syn_item != null and item.syn_item != ''">
+                    #{item.syn_item},
+                </if>
+                <if test="item.syn_flag != null and item.syn_flag != ''">
+                    #{item.syn_flag},
+                </if>
+                <if test="item.syn_time != null and item.syn_time != ''">
+                    TO_DATE(#{item.syn_time}, 'yyyy-mm-dd hh24:mi:ss'),
+                </if>
+                <if test="item.declare_id != null and item.declare_id != ''">
+                    #{item.declare_id},
+                </if>
+                <if test="item.uuid != null and item.uuid != ''">
+                    #{item.uuid},
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+
+
+    <select id="query15Data" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source1.entity.TestEntity">
+        SELECT F_BATCH_NUMBER id FROM T_BATCH_NUMBER
+    </select>
+
+    <insert id="insertTestData" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="begin" close=";end;">
+            INSERT INTO T_BATCH_NUMBER
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    F_BATCH_NUMBER,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="item.id != null and item.id != ''">
+                    #{item.id},
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+</mapper>

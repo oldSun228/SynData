@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.seisys.iti.pdd.tcdp.syndata.manage.source3.mapper.Demo3Mapper">
+
+    <select id="querySource3DataList" resultType="cn.seisys.iti.pdd.tcdp.syndata.manage.source3.entity.Demo3Entity">
+      SELECT task_Def_key_ id FROM ACT_HI_TASKINST
+    </select>
+
+
+</mapper>

@@ -1,0 +1,29 @@
+sys:
+  #系统超时时间
+  httpTimeout: 5000
+
+#读取log配置文件
+logging:
+  config: classpath:logback-boot.xml
+server:
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+  messages:
+    encoding: utf-8
+#mybatis:
+#  mapper-locations: classpath*:mapper/*.xml
+#  type-aliases-package: cn.seisys.iti.pdd.tcdp.syndata
+#  config-location: classpath*:mybatis-config.xml
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
