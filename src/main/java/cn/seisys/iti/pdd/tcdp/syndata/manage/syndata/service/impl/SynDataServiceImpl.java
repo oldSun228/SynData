@@ -78,6 +78,10 @@ public class SynDataServiceImpl implements SynDataService {
             System.out.println("触发事务回滚");
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
+    }
+
+
+    public static void main(String[] args) {
 
     }
 

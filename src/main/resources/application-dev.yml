@@ -36,8 +36,11 @@ spring:
 #      driver-class-name: oracle.jdbc.driver.OracleDriver
       driver-class-name: oracle.jdbc.OracleDriver
       type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:oracle:thin:@192.168.44.128:1521:orcl
-      username: tydic01
+#      url: jdbc:oracle:thin:@192.168.44.128:1521:orcl
+#      username: tydic01
+#      password: 123456
+      url: jdbc:oracle:thin:@172.16.10.2:1521:orcl
+      username: jiaowei
       password: 123456
       druid:
         initial-size: 5
@@ -45,8 +48,11 @@ spring:
 #      driver-class-name: oracle.jdbc.driver.OracleDriver
       driver-class-name: oracle.jdbc.OracleDriver
       type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:oracle:thin:@192.168.44.128:1521:orcl
-      username: tydic02
+#      url: jdbc:oracle:thin:@192.168.44.128:1521:orcl
+#      username: tydic02
+#      password: 123456
+      url: jdbc:oracle:thin:@172.16.10.2:1521:orcl
+      username: jiaowei
       password: 123456
       druid:
         initial-size: 5
